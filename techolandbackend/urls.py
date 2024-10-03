@@ -27,6 +27,4 @@ urlpatterns = [
     path('api/', include(('products.urls','products'),namespace='products')),
     path('api/orders/', include(('orders.urls','orders'),namespace='orders'))
 ]
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL,
-        document_root=settings.MEDIA_ROOT)
+urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
