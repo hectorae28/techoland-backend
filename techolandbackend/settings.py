@@ -43,7 +43,7 @@ EMAIL_HOST_PASSWORD = env('APP_PASS2') #os.environ.get('APP_PASS2', default='PAS
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'RENDER' not in os.environ
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 CORS_ALLOW_ALL_ORIGINS = True
 
 # Application definition
