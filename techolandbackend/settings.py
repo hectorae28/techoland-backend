@@ -102,7 +102,7 @@ WSGI_APPLICATION = 'techolandbackend.wsgi.application'
 
 DATABASES = {
         'default': dj_database_url.config(        
-                default=DATABASES_URL,
+                default=env("DATABASES_URL"),
                 conn_max_age=600    )
 }
 
