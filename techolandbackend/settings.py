@@ -34,10 +34,10 @@ SECRET_KEY = env('SECRET_KEY', default='your secret key')
 #EMAIL config
 DEFAULT_FROM_EMAIL = 'harcher5c@gmail.com'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'  
+EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = DEFAULT_FROM_EMAIL 
+EMAIL_HOST_USER = DEFAULT_FROM_EMAIL
 EMAIL_HOST_PASSWORD = env('APP_PASS2') #os.environ.get('APP_PASS2', default='PASSWORD')
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -99,7 +99,7 @@ WSGI_APPLICATION = 'techolandbackend.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
-        'default': dj_database_url.config(        
+        'default': dj_database_url.config(
                 default=env("DATABASE_URL"),
                 conn_max_age=600    )
 }
@@ -145,8 +145,9 @@ if not DEBUG:
     STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-MEDIA_ROOT =  os.path.join(BASE_DIR, 'media')
-MEDIA_URL = '/media/'
+MEDIA_URL='/media/'
+MEDIA_ROOT =  env(BASE_DIR, 'media')
+
 
 
 # Default primary key field type
