@@ -41,7 +41,7 @@ EMAIL_HOST_USER = DEFAULT_FROM_EMAIL
 EMAIL_HOST_PASSWORD = env('APP_PASS2') #os.environ.get('APP_PASS2', default='PASSWORD')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = 'RENDER' not in os.environ
 
 ALLOWED_HOSTS = []
 CORS_ALLOWED_ORIGINS = [
@@ -141,7 +141,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 
 if not DEBUG:
     STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
