@@ -12,31 +12,35 @@ class GrosorSerializer(serializers.ModelSerializer):
   class Meta:
     model = Grosor
     fields = [ 'id','grosor','precio', 'GrosorColores']
-
-class ImagenProductoSerializer(serializers.ModelSerializer):
+"""
+class CategoriasSerializer(serializers.ModelSerializer):
+  CategoriaGrosor = GrosorSerializer(many=True)
   class Meta:
-    model = ImagenProducto
-    fields = ['product_image']
-
+    model = Categoria
+    fields = ['id','nombre','CategoriaGrosor']
+"""
+class ImageSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ImagenProducto
+        fields = '__all__'
 class ProductoSerializer(serializers.ModelSerializer):
-  ProductoGrosor = GrosorSerializer(many=True)
-  ProductoImagen = ImagenProductoSerializer(many=True)
+  #ProductoCategoria = CategoriasSerializer(many=True)
+  ProductoImagen = ImageSerializer(many=True)
   class Meta:
     model = Producto
-    fields = ['id','nombre','slug','descripcion','info','ProductoGrosor', 'ProductoImagen']
-    lookup_field = 'slug'
+    fields = ['id','nombre','slug','info' , 'descripcion','ProductoImagen']
 
 class ProductosListSerializer(serializers.ModelSerializer):
-  ProductoImagen = ImagenProductoSerializer(many=True)
+  ProductoImagen = ImageSerializer(many=True)
   class Meta:
     model = Producto
-    fields = fields = ['id','nombre','slug','descripcion', 'ProductoImagen']
-
-""" class CategoriasListSerializer(serializers.ModelSerializer):
+    fields = ['id', 'nombre','slug', 'descripcion' ,'ProductoImagen']
+"""
+class CategoriasListSerializer(serializers.ModelSerializer):
     product = ProductosListSerializer()
     CategoriaGrosor = GrosorSerializer(many=True)
     class Meta:
         model = Categoria
-        fields = ['product','id','nombre','info','CategoriaGrosor',] """
-
+        fields = ['id','nombre','CategoriaGrosor','product']
+"""
 
